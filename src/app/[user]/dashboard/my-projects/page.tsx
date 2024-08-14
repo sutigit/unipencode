@@ -1,5 +1,9 @@
+import GitHubNotLinked from "@/app/ui/github-not-linked";
+
 export default function MyProjectsPage() {
     return (
-        <div>Projektini</div>
+        <main>
+            <GitHubNotLinked />
+        </main>
     );
 }

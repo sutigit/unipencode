@@ -69,7 +69,7 @@ export default function RepositoryImportList({
 
     return (
         <Card className="p-10 gap-8 bg-black">
-            <p className="text-xl font-medium">Valitse GitHub repositorio</p>
+            <p className="text-xl font-medium">Choose GitHub repository</p>
             <div className='flex gap-5 items-stretch'>
                 <Select
                     label="Github tili"

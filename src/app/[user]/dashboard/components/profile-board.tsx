@@ -19,7 +19,7 @@ export default async function ProfileBoard() {
             </div>
             <div>
                 <p className="text-2xl font-medium">{session?.user.username}</p>
-                <p className="text-2xl font-medium text-zinc-500">Sutigit</p>
+                {/* <p className="text-2xl font-medium text-zinc-500">{session?.user?.github_name}</p> */}
                 {/* <p className="my-8">Laalaalaa jotain profiili tekstiä</p>
                 <Button>Edit profile</Button> */}
             </div>

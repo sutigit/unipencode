@@ -1,5 +1,9 @@
+import GitHubNotLinked from "@/app/ui/github-not-linked";
+
 export default function Overview() {
     return (
-        <div>Yleiset</div>
+        <main>
+            <GitHubNotLinked />
+        </main>
     );
 }

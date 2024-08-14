@@ -14,23 +14,15 @@ export default function NavContent({ session }: { session: any }) {
     const pathnames = [
         {
             path: '/start-here',
-            name: 'Aloita Tästä'
+            name: 'Start Here'
         },
         {
             path: '/explore/all',
-            name: 'Tutki'
+            name: 'Explore'
         },
         {
             path: '/good-to-know',
-            name: 'Hyvä tietää'
-        },
-        {
-            path: '/for-organizations',
-            name: 'Organisaatioille'
-        },
-        {
-            path: '/market',
-            name: 'Kauppa'
+            name: 'Good to Know'
         },
     ]
 
@@ -43,11 +35,11 @@ export default function NavContent({ session }: { session: any }) {
                     as={Link}
                     className="font-bold"
                     variant="light">
-                    Laalaalaa
+                    UniOpenCode
                 </Button>
             </NavbarBrand>
 
-            <NavbarContent className="hidden sm:flex gap-10" justify="end">
+            <NavbarContent className="hidden sm:flex gap-10" justify="center">
                 {pathnames.map(({ path, name }, index) => (
                     <NavbarItem key={index} isActive={pathname === path}>
                         <Link
@@ -78,16 +70,16 @@ export default function NavContent({ session }: { session: any }) {
                             </DropdownTrigger>
                             <DropdownMenu aria-label="Profile Actions" variant="flat">
                                 <DropdownItem textValue='create' key="create" href={`/${session.user.username}/create`}>
-                                    Luo projekti
+                                    Create new Project
                                 </DropdownItem>
                                 <DropdownItem textValue='dashboard' key="dashboard" href={`/${session.user.username}/dashboard/overview`}>
-                                    Hallintapaneeli
+                                    Dashboard
                                 </DropdownItem>
                                 <DropdownItem textValue='settings' key="settings" href='/'>
-                                    Asetukset
+                                    Settings
                                 </DropdownItem>
                                 <DropdownItem className='text-warning' textValue='logout' key="logout" color='warning' onPress={() => signOutCredentials()}>
-                                    Kirjaudu ulos
+                                    Log Out
                                 </DropdownItem>
                             </DropdownMenu>
                         </Dropdown>

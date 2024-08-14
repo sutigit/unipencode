@@ -18,19 +18,7 @@ export default function ProfileBoard() {
                 <p className="text-2xl font-medium">Ben Panyanil</p>
                 <p className="text-2xl font-medium text-zinc-500">Sutigit</p>
                 <p className="my-8">Laalaalaa jotain profiili tekstiä</p>
-                <Button>Muokkaa profiilia</Button>
-                <div className="flex flex-col gap-3 py-8">
-                    <div className="flex gap-2">
-                        <Chip>6</Chip>
-                        <p>Seuraajia</p>
-                    </div>
-                    <div className="flex gap-2">
-                        <Chip>2</Chip>
-                        <p>Seurattu</p>
-                    </div>
-                </div>
-                <Divider className="border-gray"/>
-                <p className="my-8 text-xl font-medium">Saavutukset</p>
+                <Button>Edit profile</Button>
             </div>
         </div>
     );

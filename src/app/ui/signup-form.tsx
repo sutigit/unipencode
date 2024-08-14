@@ -6,7 +6,7 @@ export default function App() {
 
     return (
         <>
-            <Button onPress={onOpen} color="secondary">Rekisteröidy</Button>
+            <Button onPress={onOpen} color="secondary">Sign Up</Button>
             <Modal
                 className="bg-lightblack p-2"
                 isOpen={isOpen}
@@ -16,7 +16,7 @@ export default function App() {
                 <ModalContent>
                     {(onClose) => (
                         <>
-                            <ModalHeader className="flex flex-col gap-1">Rekisteröidy</ModalHeader>
+                            <ModalHeader className="flex flex-col gap-1">Sign Up</ModalHeader>
                             <ModalBody>
                                 {/* <Input
                                     autoFocus
@@ -49,13 +49,13 @@ export default function App() {
                                     </Link>
                                 </div> */}
                                 <div className="py-12">
-                                    <p className="mb-5">Tällä hetkellä emme rekisteröi uusia käyttäjiä.</p>
-                                    <p>Voit pyytää tunnuksia lähettämällä sähköpostia osoitteeseen: plalalal</p>
+                                    <p className="mb-5">We do not register new users at the moment.</p>
+                                    {/* <p>Voit pyytää tunnuksia lähettämällä sähköpostia osoitteeseen: plalalal</p> */}
                                 </div>
                             </ModalBody>
                             <ModalFooter>
                                 <Button color="warning" onPress={onClose}>
-                                    Eiku
+                                    Cancel
                                 </Button>
                                 {/* <Button color="primary" onPress={onClose}>
                                     Sign in

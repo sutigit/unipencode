@@ -10,7 +10,7 @@ export default async function ExploreLayout({ children }: Readonly<{ children: R
 
     return (
         <main className="flex flex-col py-10">
-            <Tabs tabs={tabs} centered={true} />
+            {/* <Tabs tabs={tabs} centered={true} /> */}
             { children }
         </main>
     )

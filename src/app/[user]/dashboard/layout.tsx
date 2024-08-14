@@ -23,22 +23,22 @@ export default async function ProfileLayout({ children, params }: Readonly<{ chi
   // const projects = await fetchUsersProjects(user[0].id);
   const tabs = [
     { 
-      title: "Yleiset",
+      title: "Overview",
       href: `/${params.user}/dashboard/overview`,
     },
     { 
-      title: "Projektini",
+      title: "My Projects",
       href: `/${params.user}/dashboard/my-projects`,
     },
     { 
-      title: "Työnhaku",
-      href: `/${params.user}/dashboard/job`,
+      title: "Portfolio",
+      href: `/${params.user}/dashboard/portfolio`,
     },
   ];
 
   return (
     <main className="flex flex-col gap-10 py-20">
-      <Header title="Hallintapaneeli" />
+      <Header title="Dashboard" />
       <div className="flex flex-row gap-20">
         <ProfileBoard />
         <section className="flex flex-col gap-10">

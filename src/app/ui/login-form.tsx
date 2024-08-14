@@ -15,7 +15,7 @@ function LoginButton() {
             color="primary"
             type="submit"
             form="login-form">
-            Kirjaudu sisään
+            Log In
         </Button>)
 }
 
@@ -25,7 +25,7 @@ export default function App() {
 
     return (
         <>
-            <Button onPress={onOpen} >Kirjaudu</Button>
+            <Button onPress={onOpen} >Log In</Button>
             <Modal
                 className="bg-lightblack p-2"
                 isOpen={isOpen}
@@ -35,7 +35,7 @@ export default function App() {
                 <ModalContent>
                     {(onClose) => (
                         <>
-                            <ModalHeader className="flex flex-col gap-1">Kirjaudu</ModalHeader>
+                            <ModalHeader className="flex flex-col gap-1">Log In</ModalHeader>
                             <ModalBody>
                                 {errorMessage && (
                                     <>
@@ -44,24 +44,24 @@ export default function App() {
                                 )}
 
                                 <Input
-                                    label="Tunnus"
+                                    label="Username"
                                     type="text"
                                     isRequired
-                                    errorMessage="Kirjoita tunnuksesi"
+                                    errorMessage="Your username"
                                     form="login-form"
                                     name="username"
                                     autoFocus
-                                    placeholder="Kirjoita tunnuksesi"
+                                    placeholder="Your username"
                                     variant="bordered"
                                 />
                                 <Input
-                                    label="Salasana"
+                                    label="Password"
                                     type="password"
                                     isRequired
-                                    errorMessage="Kirjoita salasanasi"
+                                    errorMessage="Your password"
                                     form="login-form"
                                     name="password"
-                                    placeholder="Kirjoita salasanasi"
+                                    placeholder="Your password"
                                     variant="bordered"
                                 />
 
@@ -83,7 +83,7 @@ export default function App() {
                             </ModalBody>
                             <ModalFooter>
                                 <Button color="warning" onPress={onClose}>
-                                    Eiku
+                                    Cancel
                                 </Button>
                                 <form id="login-form" action={dispatch}>
                                     <LoginButton />

@@ -18,9 +18,9 @@ export async function authenticate(
       console.error('AuthError', error.type);
       switch (error.type) {
         case 'CredentialsSignin':
-          return 'Väärä tunnus tai salasana';
+          return 'Wrong username or password';
         default:
-          return 'Hmm... jotain meni pieleen. Voisitko yrittää uudelleen?';
+          return 'Oh, something went wrong... Sorry about it! Could please try again?';
       }
     }
     throw error;

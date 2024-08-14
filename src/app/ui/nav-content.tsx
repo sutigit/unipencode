@@ -70,7 +70,7 @@ export default function NavContent({ session }: { session: any }) {
                             </DropdownTrigger>
                             <DropdownMenu aria-label="Profile Actions" variant="flat">
                                 <DropdownItem textValue='create' key="create" href={`/${session.user.username}/create`}>
-                                    Create new Project
+                                    Create Project
                                 </DropdownItem>
                                 <DropdownItem textValue='dashboard' key="dashboard" href={`/${session.user.username}/dashboard/overview`}>
                                     Dashboard

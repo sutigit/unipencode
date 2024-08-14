@@ -6,14 +6,13 @@ import { ProjectSchema } from "../validations";
 
 // USERS CRUD --------------------------------------------------------------
 // export async function createUser(): Promise<User | undefined> {
-    // try {
-    //     const user = await sql<User>`
-    //         INSERT INTO Users 
-    //     `;
-    //     return user.rows[0];
-    // } catch (error) {
-
-    // }
+//     try {
+//         const user = await sql<User>`
+//             INSERT INTO users 
+//         `;
+//         return user.rows[0];
+//     } catch (error) {
+//     }
 // }
 
 export async function getUser(username: string): Promise<User | undefined> {

@@ -1,6 +1,9 @@
 import { Navbar, NavbarBrand, NavbarContent, NavbarItem, Link, DropdownItem, DropdownTrigger, Dropdown, DropdownMenu, Avatar, Chip, Button, Image, Divider } from "@nextui-org/react";
+import { auth } from "@/auth"
 
-export default function ProfileBoard() {
+export default async function ProfileBoard() {
+    const session = await auth();
+
     return (
         <div className="flex flex-col gap-10">
             <div className="w-80 aspect-square">
@@ -15,10 +18,10 @@ export default function ProfileBoard() {
                 />
             </div>
             <div>
-                <p className="text-2xl font-medium">Ben Panyanil</p>
+                <p className="text-2xl font-medium">{session?.user.username}</p>
                 <p className="text-2xl font-medium text-zinc-500">Sutigit</p>
-                <p className="my-8">Laalaalaa jotain profiili tekstiä</p>
-                <Button>Edit profile</Button>
+                {/* <p className="my-8">Laalaalaa jotain profiili tekstiä</p>
+                <Button>Edit profile</Button> */}
             </div>
         </div>
     );

@@ -7,7 +7,7 @@ import { Providers } from "./providers";
 
 
 export const metadata: Metadata = {
-  title: "uni-opensource",
+  title: "uniopencode",
   description: "mvp",
 };
 

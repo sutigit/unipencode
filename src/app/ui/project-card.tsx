@@ -5,38 +5,34 @@ import { Card, CardHeader, CardBody, CardFooter, Divider, Link, Image } from "@n
 
 export default function ProjectCard({ project }: { project: Project }) {
   return (
-    <Card 
-      isPressable 
-      className="grow bg-lightblack max-w-lg m-auto"
+    <Card
+      isPressable
+      className="grow bg-lightblack max-w-lg m-auto py-6"
       as={Link}
-      href={`/project/${'lol'}/code`}
-      >
+      href={`/project/${'lol'}/overview`}
+    >
 
-      <CardHeader className="flex gap-6 p-6">
-        <div className='flex flex-row gap-5'>
-            <Image
-              className='bg-default'
-              alt="user avatar"
-              height={32}
-              radius="sm"
-              src="https://avatars.githubusercontent.com/u/117278596?v=4"
-              width={32}
-            />
-            <div className="flex flex-col items-start">
-              <p className="text-lg font-medium">Placeholder project</p>
-              <p className="text-small text-zinc-400">Created by Sutigit</p>
-            </div>
-          </div>
+      <CardHeader className="flex flex-col items-start gap-6 px-6">
+        <div className='flex flex-row gap-3 items-center'>
+          <Image
+            className='bg-default'
+            alt="user avatar"
+            height={20}
+            radius="sm"
+            src="https://avatars.githubusercontent.com/u/117278596?v=4"
+            width={20}
+          />
+          <p className="text-small text-zinc-400">Created by Sutigit</p>
+        </div>
+        <h2 className='text-3xl text-white'>Placeholder</h2>
       </CardHeader>
 
 
 
-      <CardBody className='flex flex-col gap-6 px-6 h-45 max-h-45'>
+      <CardBody className='flex flex-col gap-6 p-6 h-45 max-h-45'>
 
 
-        <p className='text-sm max-h-16 overflow-hidden text-clip ...'>
-          Kaivataan apuja! Tässä nyt kirjoitelen vain tekstiä jotta saan testattua miltä tämä näyttää.
-          Kaivataan apuja! Tässä nyt kirjoitelen vain tekstiä jotta saan testattua miltä tämä näyttää.
+        <p className='max-h-16 overflow-hidden text-clip ...'>
           Kaivataan apuja! Tässä nyt kirjoitelen vain tekstiä jotta saan testattua miltä tämä näyttää.
         </p>
 
@@ -56,15 +52,14 @@ export default function ProjectCard({ project }: { project: Project }) {
 
       <CardFooter className='flex justify-between items-end text-sm p-6'>
         <Image
-            isZoomed
-            shadow="none"
-            radius="none"
-            width="100%"
-            radius="md"
-            alt={'test'}
-            className="w-full aspect-video object-cover"
-            src="https://nextui-docs-v2.vercel.app/images/hero-card-complete.jpeg"
-          />
+          isZoomed
+          shadow="none"
+          width="100%"
+          radius="md"
+          alt={'test'}
+          className="w-full aspect-video object-cover"
+          src="https://nextui-docs-v2.vercel.app/images/hero-card-complete.jpeg"
+        />
       </CardFooter>
     </Card>
   );

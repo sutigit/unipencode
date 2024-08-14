@@ -12,32 +12,16 @@ export default async function ProjectsLayout({ children, params }: Readonly<{ ch
     // const projects = await fetchUsersProjects(user[0].id);
     const tabs = [
         {
-            title: "Projekti",
-            href: `/project/${params.user}/code`,
+            title: "Project Overview",
+            href: `/project/${params.user}/overview`,
         },
         {
-            title: "Ideoita",
-            href: `/project/${params.user}/ideas`,
+            title: "Ideation",
+            href: `/project/${params.user}/ideation`,
         },
         {
-            title: "Tehtävät",
-            href: `/project/${params.user}/tasks`,
-        },
-        {
-            title: "Keskustelu",
-            href: `/project/${params.user}/chat`,
-        },
-        {
-            title: "Pull Requestit",
-            href: `/project/${params.user}/pull-requests`,
-        },
-        {
-            title: "Suunnitelma",
+            title: "Roadmap",
             href: `/project/${params.user}/roadmap`,
-        },
-        {
-            title: "Tilastot",
-            href: `/project/${params.user}/stats`,
         },
     ];
 
@@ -45,7 +29,7 @@ export default async function ProjectsLayout({ children, params }: Readonly<{ ch
         <main className='flex gap-10 py-20'>
             <div className="flex flex-col gap-10 grow">
                 <ProjectTabs tabs={tabs} />
-                {children}
+                    {children}
             </div>
             <SideBoard />
         </main>

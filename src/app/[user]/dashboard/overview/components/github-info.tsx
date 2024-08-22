@@ -12,7 +12,7 @@ export default async function GithubInfo({ access_token }: { access_token: strin
                 <div className="flex gap-5 items-center">
                     <Image className="border" src={user.avatar_url} alt="avatar" width={30} height={30} />
                     <p className="font-bold text-xl">{user.login}</p>
-                    <Button color="warning">Unlink Github account</Button>
+                    <Button color="warning">Unlink</Button>
                 </div>
             </CardBody>
         </Card>

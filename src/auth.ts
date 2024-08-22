@@ -1,7 +1,7 @@
 import NextAuth, { type DefaultSession } from "next-auth"
 import { authConfig } from './auth.config';
 import Credentials from 'next-auth/providers/credentials';
-import { getUser } from '@/app/lib/data/users';
+import { getUser } from '@/app/lib/database/users';
 import { z } from 'zod';
 
 import bcrypt from 'bcrypt';

@@ -41,7 +41,7 @@ export default async function ProfileLayout({ children, params }: Readonly<{ chi
       <Header title="My Dashboard" />
       <div className="flex flex-row gap-20">
         <ProfileBoard />
-        <section className="flex flex-col gap-10">
+        <section className="flex flex-col grow gap-10">
             <DashboardTabs tabs={tabs} />
             {children}            
         </section>

@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect } from "react";
-import { createCookie } from "@/app/lib/actions";
+import { createCookie } from "@/app/lib/cookie_actions";
 import { CookieTypes } from "@/app/lib/enums";
 
 import { useRouter, useSearchParams } from 'next/navigation'

@@ -13,7 +13,7 @@ export default function GitHubNotLinked() {
     return (
         <Card className="w-full bg-lightblack p-6">
             <CardBody className="flex gap-6">
-                <p>You <span className="text-pink font-medium">haven't linked your Github</span>  account. Link your Github account to get access to all features.</p>
+                <p><span className="text-pink font-medium">Github account not linked</span>. Link to get access to all features.</p>
                 <LinkGithubBtn
                     clientId={clientId}
                     authUrl={authUrl}

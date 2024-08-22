@@ -1,27 +1,27 @@
+'use client';
+
 import { Button, Link } from "@nextui-org/react";
+import { usePathname } from 'next/navigation'
 
-// Function to construct the GitHub authorization URL and redirect the user
-const redirectToGitHubAuthorization = () => {
-    // Configuration
-    const clientId = process.env.CLIENT_ID;
-    const redirectUri = process.env.GITHUB_CALLBACK_URL;
-    const authUrl = process.env.GITHUB_AUTHORIZATION_URL;
-    const state = "laalaa"; // TODO: Generate a secure random state
+export default function LinkGithubBtn({ clientId, authRedirectUrl, authUrl }: { clientId: string, authRedirectUrl: string, authUrl: string }) { 
 
-    if (!clientId || !redirectUri || !state || !authUrl) {
-        throw new Error('Missing required configuration');
+    const currentPath = usePathname();
+
+    const redirectToGitHubAuthorization = () => {
+        const state = "uniopencode"; // TODO: Generate a secure random state
+
+        // Construct the redirect url for post authorization
+        const augmentedAuthRedirectUrl = new URL(authRedirectUrl);
+        augmentedAuthRedirectUrl.searchParams.append('next', currentPath);
+
+        // Construct the authorization URL
+        const redirectUrl = new URL(authUrl);
+        redirectUrl.searchParams.append('client_id', clientId);
+        redirectUrl.searchParams.append('redirect_uri', augmentedAuthRedirectUrl.toString());
+        redirectUrl.searchParams.append('state', state);
+
+        return redirectUrl.toString();
     }
-
-    // Construct the authorization URL
-    const redirectUrl = new URL(authUrl);
-    redirectUrl.searchParams.append('client_id', clientId);
-    redirectUrl.searchParams.append('redirect_uri', redirectUri);
-    redirectUrl.searchParams.append('state', state);
-
-    return redirectUrl.toString();
-}
-
-export default function LinkGithubBtn() {
 
     const redirect = () => {
         try {

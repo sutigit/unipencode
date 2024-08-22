@@ -4,10 +4,11 @@ import { useEffect } from "react";
 import { createCookie } from "@/app/lib/actions";
 import { CookieTypes } from "@/app/lib/enums";
 
-import { useRouter } from 'next/navigation'
+import { useRouter, useSearchParams } from 'next/navigation'
 
 export default function GithubLinker({ data }: { data: any }) {
     const router = useRouter();
+    const searchParams = useSearchParams();
 
     useEffect(() => {
         const storeTokens = async () => {
@@ -28,12 +29,11 @@ export default function GithubLinker({ data }: { data: any }) {
 
         if (data) {
             storeTokens().then(() => {
-                router.push('/explore/all');
+                // redirect back to page where the user started this process or to the home page
+                router.replace(searchParams.get('next') || '/', { scroll: true });
             });
         }
     }, []);
 
-    return (
-        <div></div>
-    );
+    return null;
 }

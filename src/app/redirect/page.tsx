@@ -1,16 +1,25 @@
 import { Spinner } from "@nextui-org/spinner";
 import Linker from "./components/github-linker";
+import { redirect } from "next/navigation";
 
 export default async function GithubRedirectPage({ params, searchParams }: { params: any, searchParams: any }) {
 
     const code = searchParams['code'];
     const state = searchParams['state'];
-    const clientId = process.env.CLIENT_ID;
-    const clientSecret = process.env.CLIENT_SECRET;
+    const clientId = process.env.GITHUB_CLIENT_ID;
+    const clientSecret = process.env.GITHUB_CLIENT_SECRET;
     const accessTokenUrl = process.env.GITHUB_ACCESS_TOKEN_URL;
 
+    // Check the state parameter that it responds with the same value that was sent
+    // TODO: Generate a secure random state
+    if (state !== 'uniopencode') {
+        console.error('State parameter does not match');
+        redirect('/error');
+    };
+
     if (!clientId || !clientSecret || !accessTokenUrl || !code) {
-        throw new Error('Missing required configuration');
+        console.error('Missing required parameters');
+        redirect('/error');
     }
 
     const createAccessTokenUrl = () => {
@@ -33,7 +42,8 @@ export default async function GithubRedirectPage({ params, searchParams }: { par
     });
 
     if (!response.ok) {
-        throw new Error('Failed to fetch access token');
+        console.error('Error fetching access token');
+        redirect('/error');
     }
 
     const data = await response.json();

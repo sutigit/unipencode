@@ -1,8 +1,15 @@
 import { Spinner } from "@nextui-org/spinner";
-import Linker from "./components/github-linker";
-import { redirect } from "next/navigation";
+import { notFound, permanentRedirect, RedirectType } from "next/navigation";
+import Linker from "@/app/redirect/components/github-linker";
+import { auth } from '@/auth';
+import { UserSchema } from "@/app/lib/validations";
 
-export default async function GithubRedirectPage({ params, searchParams }: { params: any, searchParams: any }) {
+export default async function RedirectPage({ _, searchParams }: { _: any, searchParams: any }) {
+    const session = await auth();
+
+    if (!session || !session.user) {
+        return notFound();
+    }
 
     const code = searchParams['code'];
     const state = searchParams['state'];
@@ -14,12 +21,12 @@ export default async function GithubRedirectPage({ params, searchParams }: { par
     // TODO: Generate a secure random state
     if (state !== 'uniopencode') {
         console.error('State parameter does not match');
-        redirect('/error');
+        permanentRedirect('/error', RedirectType.replace);
     };
 
     if (!clientId || !clientSecret || !accessTokenUrl || !code) {
         console.error('Missing required parameters');
-        redirect('/error');
+        permanentRedirect('/error', RedirectType.replace);
     }
 
     const createAccessTokenUrl = () => {
@@ -43,17 +50,24 @@ export default async function GithubRedirectPage({ params, searchParams }: { par
 
     if (!response.ok) {
         console.error('Error fetching access token');
-        redirect('/error');
+        permanentRedirect('/error', RedirectType.replace);
     }
 
-    const data = await response.json();
+    const ghResponse = await response.json();
+
+    const validatedUserId = UserSchema.pick({ id: true }).safeParse({ id: session.user.id });
+
+    if (!validatedUserId.success) {
+        console.error('Invalid User Id:', validatedUserId.error);
+        permanentRedirect('/error', RedirectType.replace);
+    }
 
     return (
         <main className="h-screen w-full flex justify-center gap-8 items-center">
             <p className="text-3xl font-bold">Completing linking</p>
             <Spinner />
-            <div className="invisible">
-                <Linker data={data} />
+            <div className="hidden">
+                <Linker ghResponse={ghResponse} userId={validatedUserId.data.id} />
             </div>
         </main>
     );

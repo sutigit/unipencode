@@ -1,38 +1,25 @@
 'use client';
 
 import { useEffect } from "react";
-import { createCookie } from "@/app/lib/cookie_actions";
-import { CookieTypes } from "@/app/lib/enums";
-
+import { storeGithubTokens } from "@/app/lib/db_actions";
 import { useRouter, useSearchParams } from 'next/navigation'
 
-export default function GithubLinker({ data }: { data: any }) {
+export default function GithubLinker({ ghResponse, userId }: { ghResponse: any, userId: string | undefined }) {
     const router = useRouter();
     const searchParams = useSearchParams();
 
     useEffect(() => {
-        const storeTokens = async () => {
-            // access token
-            await createCookie({
-                name: CookieTypes.ACCESS_TOKEN,
-                value: data.access_token,
-                expires: new Date(Date.now() + data.expires_in * 1000)
-            });
+        if ( !userId || !ghResponse) return;
 
-            // refresh token
-            await createCookie({
-                name: CookieTypes.REFRESH_TOKEN,
-                value: data.refresh_token,
-                expires: new Date(Date.now() + data.refresh_token_expires_in * 1000)
-            });
-        }
-
-        if (data) {
-            storeTokens().then(() => {
+        storeGithubTokens(userId, ghResponse)
+            .then(() => {
                 // redirect back to page where the user started this process or to the home page
                 router.replace(searchParams.get('next') || '/', { scroll: true });
+            }).catch((error) => {
+                console.error('Failed to store Github tokens:', error);
+                router.replace('/error', { scroll: true });
             });
-        }
+
     }, []);
 
     return null;

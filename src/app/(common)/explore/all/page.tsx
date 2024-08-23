@@ -12,7 +12,7 @@ export default async function AllPage() {
 
       <HeaderDivider title="All Projects" />
 
-      <div className="grid grid-cols-3 gap-10 pb-10">
+      <div className="grid grid-cols-3 gap-12 pb-10">
         {projects.map((project: any) => (
           <ProjectCard
             key={project.id}

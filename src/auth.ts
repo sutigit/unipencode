@@ -1,7 +1,7 @@
 import NextAuth, { type DefaultSession } from "next-auth"
 import { authConfig } from './auth.config';
 import Credentials from 'next-auth/providers/credentials';
-import { getUserByUsername } from '@/app/lib/database/users';
+import { readUserByUsername } from "./app/lib/db_actions";
 import { UserSchema } from "./app/lib/validations";
 
 
@@ -28,7 +28,7 @@ export const { auth, signIn, signOut } = NextAuth({
 
         if (parsedCredentials.success) {
           const { username, password } = parsedCredentials.data;
-          const user = await getUserByUsername(username);
+          const user = await readUserByUsername(username);
           if (!user) return null;
 
           // make this use bcrypt

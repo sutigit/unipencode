@@ -15,7 +15,7 @@ export default function ProjectCard({ project }: { project: Project }) {
         <p className='text-purple-400 font-medium'>TUTORIAL</p>
       </div>
 
-      <Card className='bg-pink text-black shadow-none'>
+      <Card className='bg-lightblack text-white shadow-none'>
         <CardHeader className="flex flex-col items-start gap-6 p-6">
           <div className='flex flex-row gap-3 items-center'>
             <Image
@@ -26,9 +26,9 @@ export default function ProjectCard({ project }: { project: Project }) {
               src="https://avatars.githubusercontent.com/u/117278596?v=4"
               width={20}
             />
-            <p className="text-black font-medium">By Sutigit</p>
+            <p className="font-medium">By Sutigit</p>
           </div>
-          <h2 className='text-3xl text-black'>Placeholder</h2>
+          <h2 className='text-3xl'>Placeholder</h2>
         </CardHeader>
 
 

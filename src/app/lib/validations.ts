@@ -7,10 +7,10 @@ export const UserSchema = z.object({
   username: z.string().min(3, { message: 'Username must be at least 3 characters long' }),
   password: z.string().min(6, { message: 'Password must be at least 6 characters long' }),
   created_at: z.string().datetime({ message: 'Invalid Date' }),
-  gh_at: z.string({ message: 'Invalid Github Access Token' }),
-  gh_rt: z.string({ message: 'Invalid Github Refresh Token' }),
-  gh_et: z.string().datetime({ message: 'Invalid Github Token Expiry Date' }),
-  gh_rt_et: z.string().datetime({ message: 'Invalid Github Refresh Token Expiry Date' }),
+  gh_at: z.string({ message: 'Invalid Github Access Token' }).nullable(),
+  gh_rt: z.string({ message: 'Invalid Github Refresh Token' }).nullable(),
+  gh_et: z.string().datetime({ message: 'Invalid Github Token Expiry Date' }).nullable(),
+  gh_rt_et: z.string().datetime({ message: 'Invalid Github Refresh Token Expiry Date' }).nullable(),
 });
 
 
